@@ -207,7 +207,7 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
   color: var(--cherry);
 }
 .nowrap { white-space: nowrap; }
-.hero-lead { font: 400 clamp(22px, 2.45vw, 38px)/1.1 var(--text); color: var(--coal); }
+.hero-lead { font: 400 clamp(22px, 2.45vw, 38px)/1.16 var(--text); color: var(--coal); }
 .hero-copy .btn { margin-top: min(1.9vw, 28px); min-height: clamp(56px, 5vw, 74px); padding: 0 clamp(24px, 2.3vw, 34px); font-size: clamp(14px, 1.04vw, 15px); gap: 20px; }
 .hero-values {
   display: flex; align-items: center; gap: 14px;
@@ -217,6 +217,9 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
   text-transform: uppercase;
 }
 .hero-values i { width: 42px; height: 1px; background: var(--coal); opacity: .5; }
+.hero-rating { min-height: 44px; transition: color .2s var(--ease); }
+.hero-rating .stars { color: var(--cherry); font-size: 15px; }
+.hero-rating:hover { color: var(--cherry); }
 
 /* entrada del hero */
 .js .hero-copy > * { animation: rise .9s var(--ease) both; }
@@ -246,27 +249,23 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
 .meats .lead { color: rgb(var(--paper-rgb) / .82); }
 .meats :focus-visible { outline-color: var(--paper); }
 
-/* Próximamente: tienda online (reserva y retiro). Sin link hasta que esté vigente. */
-.soon {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 72px); align-items: center;
-  margin: clamp(48px, 5vw, 80px) 2vw 0;
-  padding: clamp(28px, 3.4vw, 52px) clamp(24px, 3.6vw, 60px);
-  border: 1px solid rgb(var(--ivory-rgb) / .16);
-  background: rgb(var(--ivory-rgb) / .03);
+/* Cómo pedir hoy (sobre el carbón de carnes) + la tienda online como nota */
+.howto {
+  display: grid; grid-template-columns: auto 1fr; gap: 18px clamp(24px, 4vw, 64px); align-items: center;
+  margin: clamp(40px, 4vw, 64px) 2vw 0; padding-top: clamp(28px, 2.6vw, 36px);
+  border-top: 1px solid rgb(var(--ivory-rgb) / .16);
 }
-.soon-tag {
-  display: inline-block; margin-bottom: 18px; padding: 8px 12px 7px;
-  font: 600 13px/1 var(--ui); letter-spacing: .14em; text-transform: uppercase;
-  color: var(--paper); background: var(--cherry);
-}
-.soon-title { font: 600 clamp(32px, 3.2vw, 48px)/.95 var(--display); letter-spacing: -.01em; text-transform: uppercase; color: var(--paper); }
-.soon-body p { max-width: 44ch; margin-bottom: 18px; font: 400 clamp(17px, 1.2vw, 19px)/1.5 var(--text); color: rgb(var(--paper-rgb) / .8); }
-.soon-body .soon-steps {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; max-width: none; margin: 0;
-  font: 600 13px/1 var(--ui); letter-spacing: .12em; text-transform: uppercase; color: var(--paper);
-}
-.soon-steps i { width: 28px; height: 1px; background: currentColor; opacity: .5; }
-.soon-link { margin-top: 28px; color: var(--paper); }
+.howto-title { font: 600 13px/1 var(--ui); letter-spacing: .16em; text-transform: uppercase; color: rgb(var(--paper-rgb) / .7); }
+.howto-steps { display: flex; flex-wrap: wrap; gap: 12px clamp(20px, 3vw, 44px); margin: 0; padding: 0; list-style: none; }
+.howto-steps li { display: flex; align-items: center; gap: 12px; font: 400 clamp(17px, 1.3vw, 20px)/1.3 var(--text); color: var(--paper); }
+.howto-steps b { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgb(var(--paper-rgb) / .5); border-radius: 50%; font: 500 15px/1 var(--display); color: var(--paper); flex-shrink: 0; }
+.howto-note { grid-column: 2; font: 400 15px/1.5 var(--text); color: rgb(var(--paper-rgb) / .72); }
+.howto-note strong { margin-right: 6px; font: 600 12px/1 var(--ui); letter-spacing: .12em; text-transform: uppercase; color: var(--paper); }
+
+/* estrellas reales: 4,5 de 5 = 90% llenas */
+.stars { position: relative; display: inline-block; letter-spacing: .1em; line-height: 1; }
+.stars > span { background: linear-gradient(90deg, var(--cherry) 90%, rgb(var(--cherry-rgb) / .25) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
 .meats-head {
   display: grid; grid-template-columns: 1fr 1.25fr auto; align-items: center; gap: 3vw;
   padding: 0 2vw; margin-bottom: var(--space-head);
@@ -411,7 +410,7 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
 .visit-rating { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; padding-bottom: 6px; border-bottom: 1px solid transparent; transition: border-color .25s var(--ease); }
 .visit-rating:hover { border-bottom-color: var(--cherry); }
 .visit-score { font: 600 clamp(40px, 3.4vw, 52px)/1 var(--display); color: var(--cherry); }
-.visit-stars { font-size: 18px; letter-spacing: .12em; color: var(--cherry); }
+.visit-rating .stars { font-size: 18px; color: var(--cherry); }
 .visit-count { font: 600 13px/1 var(--ui); letter-spacing: .1em; text-transform: uppercase; }
 .visit-data { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 32px; margin: clamp(28px, 2.8vw, 40px) 0; }
 .visit-data dt { margin-bottom: 10px; font: 600 13px/1 var(--ui); letter-spacing: .18em; text-transform: uppercase; color: var(--cherry); }
@@ -521,7 +520,10 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
 }
 .store .eyebrow { margin-bottom: 24px; }
 .store-title { font: 600 clamp(40px, 5.1vw, 84px)/.9 var(--display); letter-spacing: -.03em; text-transform: uppercase; color: var(--cherry); }
-.store-lead { margin-top: 24px; max-width: 26em; font: 400 clamp(21px, 2vw, 30px)/1.25 var(--text); }
+.store-lead { margin-top: 24px; max-width: 26em; font: 400 clamp(21px, 2vw, 30px)/1.3 var(--text); }
+.store-rating { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 12px; font: 500 14px/1 var(--ui); }
+.store-rating .stars { color: var(--cherry); font-size: 15px; }
+.store-rating:hover { color: var(--cherry); }
 .store-btn { margin-top: clamp(28px, 2.6vw, 40px); min-height: clamp(56px, 5vw, 70px); padding: 0 clamp(24px, 2.3vw, 34px); font-size: 15px; }
 .store-back { display: flex; width: max-content; margin-top: 32px; }
 .store-items { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
@@ -664,11 +666,6 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
   .meat-card strong { font-size: clamp(22px, 6.2vw, 40px); }
   .meat-card__body span { font-size: clamp(14px, 3.7vw, 17px); }
   .meat-card > .ico-arrow { top: 12px; right: 12px; bottom: auto; width: 20px; height: 20px; }
-  .soon { grid-template-columns: 1fr; align-items: start; margin: 48px 0 0; padding: 26px 18px; }
-  .soon-title { font-size: clamp(25px, 7.3vw, 40px); }
-  .soon-link { gap: 8px; font-size: 13px; letter-spacing: .03em; white-space: normal; line-height: 1.35; }
-  .soon-body .soon-steps { gap: 8px 10px; letter-spacing: .08em; }
-  .soon-steps i { width: 16px; }
 
   .gourmet { display: block; padding: var(--space-section) 12px calc(var(--space-section) + var(--tear)); }
   .gourmet-intro { padding: 0 10px; margin-bottom: var(--space-head); }
@@ -732,6 +729,10 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
   .store { grid-template-columns: 1fr; min-height: 0; padding-top: 56px; }
   .store-title { font-size: clamp(34px, 10.2vw, 64px); }
   .store-btn { width: 100%; max-width: 380px; white-space: normal; text-align: center; line-height: 1.25; padding: 12px 20px; }
+  .howto { grid-template-columns: 1fr; margin: 40px 10px 0; }
+  .howto-steps { flex-direction: column; }
+  .howto-note { grid-column: auto; }
+  .contact-title { font-size: clamp(38px, 11.4vw, 64px); }
   .store-photo { aspect-ratio: 1; }
   .contact-map { min-height: 340px; }
   .contact-band { flex-direction: column; align-items: flex-start; }

@@ -65,18 +65,22 @@
       document.title = cat.label + ' | Pedidos por WhatsApp | CARVAN';
       $s('[data-store-label]').textContent = 'Pedidos por WhatsApp';
       $s('[data-store-title]').textContent = cat.label + '.';
-      $s('[data-store-lead]').textContent = cat.lead || 'Elegido con el mismo criterio que usamos en el mostrador. Preguntanos qué hay hoy.';
+      $s('[data-store-lead]').textContent = cat.lead || 'Elegidos con el mismo criterio que usamos en el mostrador. Preguntanos qué hay hoy.';
       if (cat.items) {
         const list = $s('[data-store-items]');
         list.innerHTML = cat.items.map(i => '<li>' + i + '</li>').join('') + '<li class="store-items-more">y lo que haya en el mostrador</li>';
         list.hidden = false;
       }
-      $s('[data-store-cta]').textContent = 'Pedí ' + lower + ' por WhatsApp';
+      $s('[data-store-cta]').textContent = 'Pedir ' + lower;
       $s('[data-store-wa]').href = 'https://wa.me/5493487686764?text=' + encodeURIComponent('Hola, quiero hacer un pedido de ' + lower + ' en CARVAN');
       const pic = $s('[data-store-img]');
       pic.srcset = `assets/${cat.img}-mobile.webp 480w, assets/${cat.img}-desktop.webp 960w`;
       pic.src = `assets/${cat.img}-desktop.webp`;
-      $s('[data-store-cats]').hidden = true;
+      // las otras categorías, para pasar de una a otra sin volver
+      $s('[data-store-cats-label]').textContent = 'Otras categorías';
+      store.querySelectorAll('[data-store-cats] li').forEach(li => {
+        if (li.querySelector('a').getAttribute('href').endsWith('c=' + key)) li.remove();
+      });
       const backLink = $s('[data-store-back]');
       backLink.href = 'index.html#' + cat.back;
       backLink.textContent = cat.back === 'complementos' ? 'Volver a más sabores' : 'Volver a nuestras carnes';
