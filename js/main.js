@@ -136,5 +136,15 @@
     frames.forEach(f => vio.observe(f));
   }
 
+  // Links que abren otra pestaña: lo avisan a lectores de pantalla
+  document.querySelectorAll('a[target="_blank"]').forEach(a => {
+    const label = a.getAttribute('aria-label');
+    if (label) {
+      if (!/pestaña/.test(label)) a.setAttribute('aria-label', label + ' (abre en otra pestaña)');
+    } else if (!a.querySelector('.sr-only')) {
+      a.insertAdjacentHTML('beforeend', '<span class="sr-only"> (abre en otra pestaña)</span>');
+    }
+  });
+
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 })();
