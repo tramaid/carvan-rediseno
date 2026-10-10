@@ -607,6 +607,7 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
   .nav a::after { display: none; }
   .nav .nav-wa { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; min-height: 52px; border: 0; background: var(--cherry); color: var(--paper); font-weight: 600; }
   .nav .nav-wa .ico { width: 22px; height: 22px; }
+  .nav .nav-wa:hover, .nav .nav-wa:focus-visible { color: var(--paper); background: var(--cherry-hover); }
   .btn-header { display: none; }
   .menu-toggle {
     display: grid; place-items: center;
