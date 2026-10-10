@@ -217,9 +217,6 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
   text-transform: uppercase;
 }
 .hero-values i { width: 42px; height: 1px; background: var(--coal); opacity: .5; }
-.hero-rating { min-height: 44px; transition: color .2s var(--ease); }
-.hero-rating .stars { font-size: 15px; }
-.hero-rating:hover { color: var(--cherry); }
 
 /* entrada del hero */
 .js .hero-copy > * { animation: rise .9s var(--ease) both; }
@@ -521,9 +518,6 @@ section[id], main[id] { scroll-margin-top: calc(var(--hh) + 12px); }
 .store .eyebrow { margin-bottom: 24px; }
 .store-title { font: 600 clamp(40px, 5.1vw, 84px)/.9 var(--display); letter-spacing: -.03em; text-transform: uppercase; color: var(--cherry); }
 .store-lead { margin-top: 24px; max-width: 26em; font: 400 clamp(21px, 2vw, 30px)/1.3 var(--text); }
-.store-rating { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 12px; font: 500 14px/1 var(--ui); }
-.store-rating .stars { font-size: 15px; }
-.store-rating:hover { color: var(--cherry); }
 .store-btn { margin-top: clamp(28px, 2.6vw, 40px); min-height: clamp(56px, 5vw, 70px); padding: 0 clamp(24px, 2.3vw, 34px); font-size: 15px; }
 .store-back { display: flex; width: max-content; margin-top: 32px; }
 .store-items { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
