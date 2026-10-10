@@ -1,6 +1,7 @@
 (() => {
   const root = document.documentElement;
   root.classList.add('js');
+  window.carvanReady = true;
 
   // Menú mobile
   const toggle = document.querySelector('.menu-toggle');
@@ -49,7 +50,7 @@
   if (store) {
     const cats = {
       'bifes': { label: 'Bifes', lead: 'Elegidos uno por uno, como en el mostrador.', items: ['Bife ancho', 'Ojo de bife'], img: 'bifes', back: 'carnes' },
-      'cortes-especiales': { label: 'Cortes especiales', lead: 'Arañita, vacío y otras joyas.', items: ['Arañita', 'Vacío'], img: 'cortes-especiales', back: 'carnes' },
+      'cortes-especiales': { label: 'Cortes especiales', lead: 'Para paladares exigentes.', items: ['Arañita', 'Vacío'], img: 'cortes-especiales', back: 'carnes' },
       'parrilla': { label: 'Parrilla', lead: 'Costillar y todo para el asado.', items: ['Costillar'], img: 'parrilla', back: 'carnes' },
       'achuras-embutidos': { label: 'Achuras y embutidos', lead: 'Chorizos, morcillas y achuras del día.', items: ['Chorizos', 'Morcillas', 'Achuras del día'], img: 'picadas', back: 'carnes' },
       'pescaderia': { label: 'Pescadería', img: 'pescaderia', back: 'complementos' },
@@ -59,6 +60,7 @@
     };
     const key = new URLSearchParams(location.search).get('c');
     const cat = cats[key];
+    if (key && !cat) { store.querySelector('[data-store-miss]').hidden = false; }
     if (cat) {
       const $s = sel => store.querySelector(sel);
       const lower = cat.label.toLowerCase();
@@ -72,7 +74,9 @@
         list.hidden = false;
       }
       $s('[data-store-cta]').textContent = 'Pedir ' + lower;
-      $s('[data-store-wa]').href = 'https://wa.me/5493487686764?text=' + encodeURIComponent('Hola, quiero hacer un pedido de ' + lower + ' en CARVAN');
+      // el mensaje ya pide lo que el mostrador necesita saber; también en el header, el menú y el flotante
+      const wa = 'https://wa.me/5493487686764?text=' + encodeURIComponent('Hola, quiero hacer un pedido de ' + lower + ' en CARVAN.\nCantidad: \nPara cuándo: \nRetiro o envío: ');
+      document.querySelectorAll('[data-store-wa], .btn-header, .nav-wa, .float-wa').forEach(a => { a.href = wa; });
       const pic = $s('[data-store-img]');
       pic.srcset = `assets/${cat.img}-mobile.webp 480w, assets/${cat.img}-desktop.webp 960w`;
       pic.src = `assets/${cat.img}-desktop.webp`;

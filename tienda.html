@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.carvanReady)document.documentElement.classList.remove('js')},3000)</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -47,6 +47,7 @@
 
 <header class="site-header">
   <a class="logo" href="index.html" aria-label="CARVAN, inicio"><img src="assets/CARVAN_LOGO01.svg" alt="CARVAN" width="739" height="193"></a>
+  <button class="menu-toggle" type="button" aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú"><span></span></button>
   <nav id="navegacion" class="nav" aria-label="Navegación principal">
     <a href="index.html#carnes">Productos</a>
     <a href="index.html#historia">Historia</a>
@@ -59,7 +60,6 @@
     <span>Pedir por WhatsApp</span>
     <svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
   </a>
-  <button class="menu-toggle" type="button" aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú"><span></span></button>
 </header>
 
 <main id="contenido">
@@ -74,8 +74,9 @@
         <span data-store-cta>Pedir por WhatsApp</span>
         <svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
-      <p class="store-note"><strong>Próximamente tienda online.</strong> Vas a poder reservar desde casa y pagar cuando retirás.</p>
+      <p class="store-help">Te atiende alguien del mostrador. Decinos cuánto, para cuándo y si retirás o te lo enviamos.</p>
       <nav class="store-cats" aria-label="Categorías" data-store-cats>
+        <p class="store-miss" data-store-miss hidden>No encontramos esa categoría. Elegí una de estas:</p>
         <p class="store-cats-label" data-store-cats-label>Elegí una categoría</p>
         <ul role="list">
           <li><a href="tienda.html?c=bifes">Bifes</a></li>
@@ -88,6 +89,7 @@
           <li><a href="tienda.html?c=almacen">Almacén</a></li>
         </ul>
       </nav>
+      <p class="store-note"><strong>Próximamente tienda online.</strong> Vas a poder reservar desde casa y pagar cuando retirás.</p>
       <a class="textlink store-back" href="index.html#carnes" data-store-back>Volver al inicio</a>
     </div>
     <div class="store-photo">

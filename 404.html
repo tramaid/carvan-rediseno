@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.carvanReady)document.documentElement.classList.remove('js')},3000)</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -32,6 +32,7 @@
 
 <header class="site-header">
   <a class="logo" href="index.html" aria-label="CARVAN, inicio"><img src="assets/CARVAN_LOGO01.svg" alt="CARVAN" width="739" height="193"></a>
+  <button class="menu-toggle" type="button" aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú"><span></span></button>
   <nav id="navegacion" class="nav" aria-label="Navegación principal">
     <a href="index.html#carnes">Productos</a>
     <a href="index.html#historia">Historia</a>
@@ -44,7 +45,6 @@
     <span>Pedir por WhatsApp</span>
     <svg class="ico ico-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
   </a>
-  <button class="menu-toggle" type="button" aria-controls="navegacion" aria-expanded="false" aria-label="Abrir menú"><span></span></button>
 </header>
 
 <main id="contenido">
