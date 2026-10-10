@@ -4,6 +4,12 @@ Sitio estático (HTML + CSS + JS, sin build). Referencia: `03-referencias/mockup
 
 Servidor local: `python -m http.server 8766 --bind 127.0.0.1` (o cualquier servidor estático) y abrir <http://127.0.0.1:8766/>.
 
+## Repo y vista previa
+
+- Repo: https://github.com/tramaid/carvan-rediseno (público).
+- Vista previa: https://tramaid.github.io/carvan-rediseno/ (GitHub Pages desde `main`, raíz). Cada push a `main` la actualiza.
+- El repo privado `tramaid/carvan-web` es el sitio anterior y no se tocó.
+
 ## Estructura
 
 - `index.html` (incluye "Visitanos" con mapa y puntaje de Google antes del footer), `contacto.html`, `tienda.html` (próximamente tienda virtual + pedido por WhatsApp; se llega desde las 8 tarjetas de carnes y más sabores con `?c=categoría`, que adapta etiqueta, foto y mensaje de WhatsApp)
