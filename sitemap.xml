@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://carvan.ar/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <image:image><image:loc>https://carvan.ar/assets/hero-desktop.webp</image:loc></image:image>
+    <image:image><image:loc>https://carvan.ar/assets/og-carvan.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://carvan.ar/contacto.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+</urlset>

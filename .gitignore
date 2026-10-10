@@ -1,0 +1,4 @@
+revision/*
+!revision/2026-10-10/
+revision/2026-10-10/*
+!revision/2026-10-10/generar-bordes.js
