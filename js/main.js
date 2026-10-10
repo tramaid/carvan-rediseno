@@ -43,30 +43,43 @@
     items.forEach(el => el.classList.add('is-in'));
   }
 
-  // Tienda (próximamente): adapta etiqueta, foto y mensaje de WhatsApp a la categoría de la tarjeta (?c=)
+  // Tienda: la página toma la categoría de la tarjeta (?c=). Título = la categoría, lo que hay, y el pedido por WhatsApp.
+  // Sólo se nombran productos confirmados en el copy; el resto se consulta por WhatsApp.
   const store = document.querySelector('[data-store]');
   if (store) {
     const cats = {
-      'bifes': ['Bifes', 'bifes', 'bifes', 'carnes'],
-      'cortes-especiales': ['Cortes especiales', 'cortes especiales', 'cortes-especiales', 'carnes'],
-      'parrilla': ['Parrilla', 'cortes para parrilla', 'parrilla', 'carnes'],
-      'achuras-embutidos': ['Achuras y embutidos', 'achuras y embutidos', 'picadas', 'carnes'],
-      'pescaderia': ['Pescadería', 'pescadería', 'pescaderia', 'complementos'],
-      'fiambres': ['Fiambres', 'fiambres', 'fiambres', 'complementos'],
-      'quesos': ['Quesos', 'quesos', 'quesos', 'complementos'],
-      'almacen': ['Almacén', 'almacén', 'almacen', 'complementos']
+      'bifes': { label: 'Bifes', lead: 'Elegidos uno por uno, como en el mostrador.', items: ['Bife ancho', 'Ojo de bife'], img: 'bifes', back: 'carnes' },
+      'cortes-especiales': { label: 'Cortes especiales', lead: 'Arañita, vacío y otras joyas.', items: ['Arañita', 'Vacío'], img: 'cortes-especiales', back: 'carnes' },
+      'parrilla': { label: 'Parrilla', lead: 'Costillar y todo para el asado.', items: ['Costillar'], img: 'parrilla', back: 'carnes' },
+      'achuras-embutidos': { label: 'Achuras y embutidos', lead: 'Chorizos, morcillas y achuras del día.', items: ['Chorizos', 'Morcillas', 'Achuras del día'], img: 'picadas', back: 'carnes' },
+      'pescaderia': { label: 'Pescadería', img: 'pescaderia', back: 'complementos' },
+      'fiambres': { label: 'Fiambres', img: 'fiambres', back: 'complementos' },
+      'quesos': { label: 'Quesos', img: 'quesos', back: 'complementos' },
+      'almacen': { label: 'Almacén', img: 'almacen', back: 'complementos' }
     };
-    const cat = cats[new URLSearchParams(location.search).get('c')];
+    const key = new URLSearchParams(location.search).get('c');
+    const cat = cats[key];
     if (cat) {
-      const [label, wa, img, back] = cat;
-      store.querySelector('[data-store-label]').textContent = label;
-      store.querySelector('[data-store-wa]').href = 'https://wa.me/5493487686764?text=' + encodeURIComponent('Hola, quiero hacer un pedido de ' + wa + ' en CARVAN');
-      const pic = store.querySelector('[data-store-img]');
-      pic.srcset = `assets/${img}-mobile.webp 480w, assets/${img}-desktop.webp 960w`;
-      pic.src = `assets/${img}-desktop.webp`;
-      const backLink = store.querySelector('[data-store-back]');
-      backLink.href = 'index.html#' + back;
-      if (back === 'complementos') backLink.textContent = 'Volver a más sabores';
+      const $s = sel => store.querySelector(sel);
+      const lower = cat.label.toLowerCase();
+      document.title = cat.label + ' | Pedidos por WhatsApp | CARVAN';
+      $s('[data-store-label]').textContent = 'Pedidos por WhatsApp';
+      $s('[data-store-title]').textContent = cat.label + '.';
+      $s('[data-store-lead]').textContent = cat.lead || 'Elegido con el mismo criterio que usamos en el mostrador. Preguntanos qué hay hoy.';
+      if (cat.items) {
+        const list = $s('[data-store-items]');
+        list.innerHTML = cat.items.map(i => '<li>' + i + '</li>').join('') + '<li class="store-items-more">y lo que haya en el mostrador</li>';
+        list.hidden = false;
+      }
+      $s('[data-store-cta]').textContent = 'Pedí ' + lower + ' por WhatsApp';
+      $s('[data-store-wa]').href = 'https://wa.me/5493487686764?text=' + encodeURIComponent('Hola, quiero hacer un pedido de ' + lower + ' en CARVAN');
+      const pic = $s('[data-store-img]');
+      pic.srcset = `assets/${cat.img}-mobile.webp 480w, assets/${cat.img}-desktop.webp 960w`;
+      pic.src = `assets/${cat.img}-desktop.webp`;
+      $s('[data-store-cats]').hidden = true;
+      const backLink = $s('[data-store-back]');
+      backLink.href = 'index.html#' + cat.back;
+      backLink.textContent = cat.back === 'complementos' ? 'Volver a más sabores' : 'Volver a nuestras carnes';
     }
   }
 
